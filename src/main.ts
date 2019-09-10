@@ -3,8 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
+import VueWait from 'vue-wait'
 
 Vue.use(BootstrapVue)
+Vue.use(VueWait)
 
 Vue.config.productionTip = true
 
