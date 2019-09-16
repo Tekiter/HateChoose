@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import BanPickSelect from './views/BanPickSelect.vue'
+import FullRandomSelect from './views/FullRandomSelect.vue'
+import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
 
@@ -15,6 +18,16 @@ export default new Router({
       component: Home
     },
     {
+      path: '/banpick',
+      name: 'banpick',
+      component: BanPickSelect
+    },
+    {
+      path: '/fullrandom',
+      name: 'fullrandom',
+      component: FullRandomSelect
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -26,6 +39,10 @@ export default new Router({
       path:'/roullet',
       name:'roullet',
       component:()=>import('./components/Roullet.vue')
-    }
+    },
+    {
+      path: '*',
+      component: NotFound
+    },
   ]
 })
