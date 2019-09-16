@@ -17,14 +17,15 @@ import { Region, RegionData } from "../lib/api";
 @Component({
     components: {}
 })
-export default class MyComponent extends Vue {
+export default class RegionSelect extends Vue {
     @Prop() regions!: Region[];
-    @Prop() value!: Region;
+    @Prop() value!: Region | null;
 
     cur: Region | null = null;
 
     onUpdate() {
         this.$emit('input', this.cur);
+        // this.value = this.cur;
     }
     
     get options() {
