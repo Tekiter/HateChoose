@@ -29,26 +29,27 @@
 </style>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Prop, Watch } from 'vue-property-decorator'
 
 import NavBar from '../components/NavBar.vue';
 import RegionSelect from '../components/RegionSelect.vue';
-import { getRegions } from '../lib/api';
+import { Region, RegionData, getRegions } from "../lib/api";
 
-export default Vue.extend({
-  components: {
-    'h-nav': NavBar,
-    RegionSelect
-  },
-  data() {
-    return {
-      selected: null,
+@Component({
+    components: {
+      'h-nav': NavBar,
+      RegionSelect
     }
-  },
-  computed: {
-    regions() {
+})
+export default class Home extends Vue {
+
+    selected: Region | null = null;
+
+    get regions() {
       return getRegions();
     }
-  }
-});
+}
+
 </script>
