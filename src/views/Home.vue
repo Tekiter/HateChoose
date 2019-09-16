@@ -32,10 +32,18 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Prop, Watch } from 'vue-property-decorator'
+import { getModule } from 'vuex-module-decorators'
 
 import NavBar from '../components/NavBar.vue';
 import RegionSelect from '../components/RegionSelect.vue';
 import { Region, RegionData, getRegions } from "../lib/api";
+import RegionDataStore from '../store/RegionDataStore';
+
+/**
+ * Typescript 호환 가능하게 정의된 vuex의 RegionDataStore 를 불러옴
+ */
+const regionState = getModule(RegionDataStore);
+
 
 @Component({
     components: {
@@ -48,7 +56,11 @@ export default class Home extends Vue {
     selected: Region | null = null;
 
     get regions() {
-      return getRegions();
+      return regionState.regions;
+    }
+
+    created() {
+      regionState.updateRegions();
     }
     
 }
