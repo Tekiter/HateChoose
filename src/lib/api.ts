@@ -11,11 +11,13 @@ import * as dataLoader from './dataLoader';
 export class Region {
     Id: string;
     TitleName: string;
+    Name: string;
     
 
     constructor() {
         this.Id = "";
         this.TitleName = "";
+        this.Name = "";
     }
 
     /**
@@ -46,6 +48,7 @@ export function getRegions() : Array<Region> {
 
         reg.Id = i.id;
         reg.TitleName = i.titleName;
+        reg.Name = i.name;
 
         result.push(reg);
     });
