@@ -5,7 +5,7 @@
       <template v-slot:header>고르기 싫어</template>
       <h2 class="mt-5">지역을 선택하세요.</h2>
       <div>
-        <region-select class="regionselect" :regions="regions"></region-select>
+        <region-select class="regionselect" :regions="regions" v-model="selected"></region-select>
       </div>
       
 
@@ -39,6 +39,11 @@ export default Vue.extend({
   components: {
     'h-nav': NavBar,
     RegionSelect
+  },
+  data() {
+    return {
+      selected: null,
+    }
   },
   computed: {
     regions() {
