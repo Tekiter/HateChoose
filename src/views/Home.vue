@@ -39,7 +39,9 @@ import RegionSelect from '../components/RegionSelect.vue';
 import { Region, RegionData, getRegions } from "../lib/api";
 import RegionDataStore from '../store/RegionDataStore';
 
-
+/**
+ * Typescript 호환 가능하게 정의된 vuex의 RegionDataStore 를 불러옴
+ */
 const regionState = getModule(RegionDataStore);
 
 
