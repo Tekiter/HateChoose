@@ -14,7 +14,7 @@ export function getList() {
         {
             id: catholicuniv.id,
             titleName: catholicuniv.titleName,
-            name: catholicuniv.Name
+            name: catholicuniv.name
         }
     ]
 }
