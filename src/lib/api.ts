@@ -18,21 +18,41 @@ export class Region {
         this.Id = "";
         this.TitleName = "";
         this.Name = "";
-    }
 
+        this.data = null;
+    }
+    
+    private data: RegionData | null;
     /**
-     * 식당들의 데이터들을 가져온다.
+     * 식당들의 데이터들을 가져오는 프로퍼티 (Lazy load)
      */
-    getData(): RegionData {
-        let result: RegionData = dataLoader.getData(this.Id);
+    get getData(): RegionData {
+
+        if (this.data) {
+            return this.data;
+        }
+
+        let data = dataLoader.getData(this.Id);
+        let result: RegionData = new RegionData(data.places);
+        
+        this.data = result;
 
         return result;
     }
 }
 
-export class RegionData {
-    constructor() {
+export interface Place {
+    name: string,
+    category: string[],
+    price: string,
+    foods: string[],
+    loc: number[]
+}
 
+export class RegionData {
+    Places: Place[]
+    constructor(places: Place[]) {
+        this.Places = places
     }
 }
 
