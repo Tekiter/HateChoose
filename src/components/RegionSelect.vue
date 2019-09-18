@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-form-select :input="cur" @input="cur=arguments[0]; onUpdate();" :options="options"></b-form-select>
+        <b-form-select :input="value" @input="onUpdate(arguments[0]);" :options="options"></b-form-select>
     </div>
 </template>
 <style scoped>
@@ -19,12 +19,12 @@ import { Region, RegionData } from "../lib/api";
 })
 export default class RegionSelect extends Vue {
     @Prop() regions!: Region[];
-    @Prop() value!: Region | null;
+    @Prop() value: Region | null = null;
 
-    cur: Region | null = null;
+    // cur: Region | null = null;
 
-    onUpdate() {
-        this.$emit('input', this.cur);
+    onUpdate(val: Region) {
+        this.$emit('input', val);
         // this.value = this.cur;
     }
     

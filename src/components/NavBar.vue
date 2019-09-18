@@ -18,18 +18,18 @@
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
-  props: ['region'],
+  props: ['prefix'],
   data() {
     return {
-      regionName: "가대생은"
+      
     }
   },
   computed: {
     titleName(): string {
-      if (!this.region) {
+      if (!this.prefix) {
         return "";
       }
-      return this.region + " ";
+      return this.prefix + " ";
     }
   }
 });
