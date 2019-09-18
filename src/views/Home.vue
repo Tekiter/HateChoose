@@ -9,7 +9,7 @@
       </div>
 
       <b-button @click="gotoFullRandom()" variant="primary" pill class="mt-5">Full Random</b-button>
-      <b-button :to="'banpick'" variant="secondary" pill class="ml-3 mt-5">BanPick</b-button>
+      <b-button @click="gotoBanPick()" variant="secondary" pill class="ml-3 mt-5">BanPick</b-button>
     </b-jumbotron>
     <b-container></b-container>
   </div>
@@ -65,7 +65,13 @@ export default class Home extends Vue {
       sessionState.setRegion(this.selected);
       this.$router.push({ path: "fullrandom" });
     }
-    
+  }
+
+  gotoBanPick() {
+    if (this.selected) {
+      sessionState.setRegion(this.selected);
+      this.$router.push({ path: "banpick"});
+    }
   }
 }
 </script>
