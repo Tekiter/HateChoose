@@ -17,5 +17,9 @@ import { Region, getRegions } from '../lib/api'
       this.region = region
     }
   
-    
+    get hasSession() {
+      return (
+        this.region != null
+      )
+    }
   }
