@@ -44,9 +44,9 @@ export class Region {
 export interface Place {
     name: string,
     category: string[],
-    price: string,
-    foods: string[],
-    loc: number[]
+    price: number,
+    foods?: string[],
+    loc?: number[]
 }
 
 export class RegionData {
