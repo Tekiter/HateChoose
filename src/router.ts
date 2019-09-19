@@ -51,9 +51,9 @@ export default new Router({
       }
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')      
+      path: '/editor',
+      name: 'editor',
+      component: () => import('./views/RegionEditor.vue')      
     },
     {
       path: '/roullet',
