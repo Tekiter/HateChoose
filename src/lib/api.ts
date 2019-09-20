@@ -26,7 +26,7 @@ export class Region {
     /**
      * 식당들의 데이터들을 가져오는 프로퍼티 (Lazy load)
      */
-    get getData(): RegionData {
+    get Data(): RegionData {
 
         if (this.data) {
             return this.data;
