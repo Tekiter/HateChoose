@@ -5,6 +5,13 @@ import BanPickSelect from './views/BanPickSelect.vue'
 import FullRandomSelect from './views/FullRandomSelect.vue'
 import NotFound from './views/NotFound.vue'
 
+
+import { getModule } from "vuex-module-decorators";
+import SessionStore from "./store/SessionStore";
+
+const sessionState = getModule(SessionStore);
+
+
 Vue.use(Router)
 
 // typescript 식 routing
@@ -20,25 +27,38 @@ export default new Router({
     {
       path: '/banpick',
       name: 'banpick',
-      component: BanPickSelect
+      component: BanPickSelect,
+      beforeEnter(to, from, next) {
+        if (sessionState.hasSession) {
+          next();
+        }
+        else {
+          next({ name: 'home' });
+        }
+      }
     },
     {
       path: '/fullrandom',
       name: 'fullrandom',
-      component: FullRandomSelect
+      component: FullRandomSelect,
+      beforeEnter(to, from, next) {
+        if (sessionState.hasSession) {
+          next();
+        }
+        else {
+          next({ name: 'home' });
+        }
+      }
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/editor',
+      name: 'editor',
+      component: () => import('./views/RegionEditor.vue')      
     },
     {
-      path:'/roullet',
-      name:'roullet',
-      component:()=>import('./components/Roullet.vue')
+      path: '/roullet',
+      name: 'roullet',
+      component: () => import('./components/Roullet.vue')
     },
     {
       path: '*',
