@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h-nav></h-nav>
     <section class="hero is-dark">
       <div class="hero-body">
         <div class="container">
@@ -33,18 +34,18 @@
                   <input
                     class="input"
                     type="text"
-                    placeholder="Input More Prize"
+                    placeholder="원하는 메뉴를 적으세요!"
                     v-model="new_option"
                     v-on:keyup.enter="addOptions"
                   />
                 </div>
               </div>
               <div class="column is-half">
-                <button class="button is-primary" v-on:click="addOptions">Add Prize</button>
+                <button class="button is-primary" v-on:click="addOptions">메뉴 추가</button>
               </div>
               <div class="column is-one-quarter" v-for="option in options" :key="option">
                 <button class="button is-danger" v-on:click="removeOptions(option)">x</button>
-                <span>{{option}}</span>
+                <span style="display:inline-block;">{{option}}</span>
               </div>
             </div>
           </div>
@@ -55,10 +56,14 @@
 </template>
 <script>
 import Vue from "vue";
+import NavBar from '../components/NavBar.vue';
 export default Vue.extend({
+  components:{
+    'h-nav': NavBar
+  },
   data: function() {
     return {
-      options: ["Try Again"],
+      options: ["한번 더!"],
       new_option: "",
       startAngle: 0,
       startAngleStart: 0,
@@ -157,9 +162,13 @@ export default Vue.extend({
       }
     },
     spin: function() {
-      this.spinAngleStart = Math.random() * 10 + 10;
+      /* 룰렛 돌아가는 스피드 */
+      /* 요소마다 개별 확률을 주는 건 
+      요소별로 룰렛이 그려지는 범위를 다르게 주어도 됨 */
+      this.spinAngleStart = Math.random() * 60 + 10;
       this.spinTime = 0;
-      this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
+      /* 룰렛 돌아가는 시간 */
+      this.spinTimeTotal = Math.random() * 3 + 10 * 1000;
       this.rotateWheel();
     },
     rotateWheel: function() {
@@ -206,4 +215,8 @@ export default Vue.extend({
 });
 </script>
 <style scoped src="../assets/bulma.css">
+#category-list{
+  /* display:inline-block; */
+  width:80%;
+}
 </style>

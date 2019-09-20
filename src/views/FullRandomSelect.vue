@@ -1,6 +1,8 @@
 <template>
     <div>
+
         <h-nav :prefix="region.TitleName"></h-nav>
+
         <b-container>
             
         </b-container>

@@ -61,6 +61,11 @@ export default new Router({
       component: () => import('./components/Roullet.vue')
     },
     {
+      path: '/map',
+      name: 'map',
+      component:()=>import('./views/MapTest.vue')
+    },
+    {
       path: '*',
       component: NotFound
     },

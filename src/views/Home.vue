@@ -1,6 +1,7 @@
 <template>
   <div>
     <h-nav></h-nav>
+    
     <b-jumbotron class="text-center">
       <template v-slot:header>고르기 싫어</template>
       <h2 class="mt-5">지역을 선택하세요.</h2>
@@ -58,7 +59,7 @@ export default class Home extends Vue {
     regionState.updateRegions();
   }
 
-  mounted() {}
+  
 
   gotoFullRandom() {
     if (this.selected) {
