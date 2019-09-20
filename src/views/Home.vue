@@ -1,7 +1,7 @@
 <template>
   <div>
     <h-nav></h-nav>
-    <div id="map" style="width:500px;height:400px;"></div>
+    
     <b-jumbotron class="text-center">
       <template v-slot:header>고르기 싫어</template>
       <h2 class="mt-5">지역을 선택하세요.</h2>
@@ -59,15 +59,7 @@ export default class Home extends Vue {
     regionState.updateRegions();
   }
 
-  mounted() {
-    var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-  }
+  
 
   gotoFullRandom() {
     if (this.selected) {
